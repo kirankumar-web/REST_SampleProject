@@ -2,8 +2,10 @@ const express = require('express');
 const route1 = express.Router();
 const Order = require('../Models/Order.model');
 
-route1.get('/', (req, res, next) => {
-  res.send('getting all the list of the orders');
+route1.get('/', async(req, res, next) => {
+  //res.send('getting all the list of the orders');
+  const result= await Order.find({},{__v:0,_id:0});
+  res.send(result);
 });
 route1.post('/', async(req, res, next) => {
     try {

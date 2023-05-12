@@ -2,9 +2,16 @@ const express=require('express')
 const route=express.Router();
 
 const Product=require('../Models/Product.model')
-
-route.get('/',(req,res,next)=>{
-    res.send('getting all the list of the products')
+//async & await to get the all the list of product from database
+route.get('/',async(req,res,next)=>{
+    //res.send('getting all the list of the products')
+     try {
+        //const result=await Product.find({},{__v:0, _id:0,name:0,price:0});
+        const result=await Product.find({price:800},{__v:0});
+        res.send(result);
+     } catch (error) {
+        console.log(error.message);
+     }
 })
 //async way to send data into Database
 route.post('/', async(req, res, next) => {
