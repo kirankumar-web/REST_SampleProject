@@ -1,4 +1,7 @@
 ###
+GET http://localhost:3002/orders
+
+###
 GET http://localhost:3002/orders/id
 ###
 PUT http://localhost:3002/orders/id1 
@@ -25,10 +28,10 @@ curl -X POST -H
 curl -X POST -H 
 "Content-Type: application/json" -d '
 {
-    "items": "5",
-     "price" : "6666",
-     "orderid": "1234",
+    "items": "2",
+     "price" : "9000",
+     "orderid": "123456",
      "custinfo": "{kirankumar,7981297987, benglore, karnataka}",
-      "orderdate": "2023-05-12",
+      "orderdate": "2023-04-12",
       "paymentinfo": "Credit Card"
 }' http://localhost:3002/orders
