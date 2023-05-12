@@ -5,6 +5,7 @@ route.get('/',(req,res,next)=>{
     res.send('getting all the list of the products')
 })
 route.post('/',(req,res,next)=>{
+    console.log(req.body);
     res.send('creating the product')
 })
 route.get('/:id',(req,res,next)=>{
@@ -17,6 +18,7 @@ route.patch('/:id2',(req,res,next)=>{
     res.send('updating specific info of the product')
 })
 route.delete('/:id3',(req,res,next)=>{
+    
     res.send('delete the specific product')
 })
 

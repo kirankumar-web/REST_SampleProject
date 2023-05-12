@@ -1,6 +1,11 @@
 GET http://localhost:3001/products
 ###
 POST http://localhost:3001/products
+Content-Type: application/json
+{
+    "name" : "oneplus Nord",
+    "price" : "$400"
+}
 ###
 GET http://localhost:3001/products/id
 ###
@@ -41,18 +46,22 @@ GET http://localhost:3002/
 GET  http://localhost:3001/test/34587534/kiran
 
 ###
-POST /test HTTP/1.1
+POST /product HTTP/1.1
 Host: localhost:3001
 Content-Type: application/json
 
 {
-    "id" : "34587534",
-    "user": "kiran"
+    "name" : "oneplus Nord",
+    "price" : "$400"
 }
 
 ###
-POST /test HTTP/1.1
-Host: localhost:3001
+POST  http://localhost:3001/test
 Content-Type: application/application/x-www-form-urlencoded
 
 id=34587534&user=kiran
+###
+curl -X POST -H "Content-Type: application/json" -d '{
+    "name" : "oneplus Nord",
+    "price" : "$400"
+}' http://localhost:3001/products
