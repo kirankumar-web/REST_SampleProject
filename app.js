@@ -7,7 +7,7 @@ app.use(express.urlencoded({extended: true}));
 //mongodb+srv://kirankumaryadav:<password>@cluster1.b4ot2yq.mongodb.net/?retryWrites=true&w=majority
 //kirankumaryadav
 //Q0qzHN8jS9HF6UZ4
-mongoose.connect('mongodb+srv://kirankumaryadav:Q0qzHN8jS9HF6UZ4@cluster1.b4ot2yq.mongodb.net/?retryWrites=true&w=majority/REST_PRODUCT_API').then(()=>
+mongoose.connect('mongodb+srv://kirankumaryadav:Q0qzHN8jS9HF6UZ4@cluster1.b4ot2yq.mongodb.net/REST_PRODUCT_API').then(()=>
 {
     console.log('mongodb connected---');
 });
