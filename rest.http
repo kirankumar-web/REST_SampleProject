@@ -24,25 +24,15 @@ GET http://localhost:3001/test?name=user1&id=45
 ###
 GET http://localhost:3001/test/3458753674578/kiran
 
-
 ###
-GET http://localhost:3002/orders
-###
-POST  http://localhost:3002/orders
-###
-GET http://localhost:3002/orders/id
-###
-PUT http://localhost:3002/orders/id1 
-###
-PATCH http://localhost:3002/orders/id2 
-###
-DELETE  http://localhost:3002/orders/id3 
-
-###
-GET http://localhost:3002/
-
-
-###
+curl -X POST  http://localhost:3002/orders
+Content-Type: application/json
+{
+    "items": "5",
+     "price" : "6666",
+      "id"   : "2343453",
+     "orderdate": "10/05/2023"
+}###
 GET  http://localhost:3001/test/34587534/kiran
 
 ###
@@ -71,7 +61,7 @@ curl -X POST -H
 curl -X POST -H 
 "Content-Type: application/json" -d '
 {
-    "name" : "oneplus 7r",
-    "price" : "900"
+    "name" : "oneplus 14r",
+    "price" : "1600"
 }' http://localhost:3001/products
 

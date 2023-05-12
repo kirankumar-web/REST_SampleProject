@@ -1,47 +1,51 @@
-// const express=require('express')
-// const route1=express.Router();
+const express = require('express');
+const route1 = express.Router();
+const Order = require('../Models/Order.model');
 
-// route1.get('/',(req,res,next)=>{
-//     res.send("getting all the orders")
-// })
-// route1.post('/',(req,res,next)=>{
-//     res.send("creating the order")
-// })
-// route1.get('/:id',(req,res,next)=>{
-//     res.send("getting the specific order")
-// })
-// route1.put('/:id1',(req,res,next)=>{
-//     res.send("updating the order")
-// })
-// route1.patch('/:id2',(req,res,next)=>{
-//     res.send("updating specific info order")
-// })
-// route1.delete('/:id3',(req,res,next)=>{
-//     res.send("deleting the order")
-// })
+route1.get('/', (req, res, next) => {
+  res.send('getting all the list of the orders');
+});
+route1.post('/', async(req, res, next) => {
+    try {
+      const order=new Order(req.body);
+      const result=await order.save();
+      res.send(result);
+    } catch (error) {
+        console.log(error.message);
+    }
+});
+// route1.post('/', (req, res, next) => {
+//   console.log(req.body);
+//   const order = new Order({
+//     items: req.body.items,
+//     price: req.body.price,
+//   });
 
-// module.export= route1;
+//   order
+//     .save()
+//     .then(result => {
+//       console.log(result);
+//       res.send(result);
+//     })
+//     .catch(err => {
+//       console.log(err.message);
+//       res.status(500).send('Error occurred while saving the order.');
+//     });
+// });
 
-const express=require('express')
-const route1=express.Router();
+route1.get('/:id', (req, res, next) => {
+  res.send('getting the specific orders');
+});
 
-route1.get('/',(req,res,next)=>{
-    res.send('getting all the list of the orders')
-})
-route1.post('/',(req,res,next)=>{
-    res.send('creating the orders')
-})
-route1.get('/:id',(req,res,next)=>{
-    res.send('getting the specific orders')
-})
-route1.put('/:id1',(req,res,next)=>{
-    res.send('updating the specific orders')
-})
-route1.patch('/:id2',(req,res,next)=>{
-    res.send('updating specific info of the orders')
-})
-route1.delete('/:id3',(req,res,next)=>{
-    res.send('delete the specific orders')
-})
+route1.put('/:id1', (req, res, next) => {
+  res.send('updating the specific orders');
+});
 
-module.exports= route1;
+route1.patch('/:id2', (req, res, next) => {
+  res.send('updating specific info of the orders');
+});
+
+route1.delete('/:id3', (req, res, next) => {
+  res.send('delete the specific orders');
+});
+module.exports=route1;
