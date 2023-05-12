@@ -1,0 +1,58 @@
+GET http://localhost:3001/products
+###
+POST http://localhost:3001/products
+###
+GET http://localhost:3001/products/id
+###
+PUT http://localhost:3001/products/id1
+###
+PATCH http://localhost:3001/products/id2
+###
+DELETE http://localhost:3001/products/id3
+
+###
+GET http://localhost:3001/
+
+###
+GET http://localhost:3001/test?name=user1&id=45
+
+###
+GET http://localhost:3001/test/3458753674578/kiran
+
+
+###
+GET http://localhost:3002/orders
+###
+POST  http://localhost:3002/orders
+###
+GET http://localhost:3002/orders/id
+###
+PUT http://localhost:3002/orders/id1 
+###
+PATCH http://localhost:3002/orders/id2 
+###
+DELETE  http://localhost:3002/orders/id3 
+
+###
+GET http://localhost:3002/
+
+
+###
+GET  http://localhost:3001/test/34587534/kiran
+
+###
+POST /test HTTP/1.1
+Host: localhost:3001
+Content-Type: application/json
+
+{
+    "id" : "34587534",
+    "user": "kiran"
+}
+
+###
+POST /test HTTP/1.1
+Host: localhost:3001
+Content-Type: application/application/x-www-form-urlencoded
+
+id=34587534&user=kiran
