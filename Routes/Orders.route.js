@@ -4,7 +4,7 @@ const Order = require('../Models/Order.model');
 
 route1.get('/', async(req, res, next) => {
   //res.send('getting all the list of the orders');
-  const result= await Order.find({},{__v:0,_id:0});
+  const result= await Order.find({},{__v:0,_id:1});
   res.send(result);
 });
 route1.post('/', async(req, res, next) => {
@@ -35,8 +35,15 @@ route1.post('/', async(req, res, next) => {
 //     });
 // });
 
-route1.get('/:id', (req, res, next) => {
-  res.send('getting the specific orders');
+route1.get('/:id', async(req, res, next) => {
+   const id=req.params.id;
+   try {
+    const order=await Order.findById(id);
+    res.send(order);
+   } catch (error) {
+    console.log(error.message);
+   }
+  //res.send('getting the specific orders');
 });
 
 route1.put('/:id1', (req, res, next) => {
@@ -47,7 +54,14 @@ route1.patch('/:id2', (req, res, next) => {
   res.send('updating specific info of the orders');
 });
 
-route1.delete('/:id3', (req, res, next) => {
-  res.send('delete the specific orders');
+route1.delete('/:id', async(req, res, next) => {
+  const id=req.params.id;
+  try {
+    const result=await Order.findByIdAndDelete(id);
+    res.send(result);
+  } catch (error) {
+    console.log(error.message)
+  }
+  //res.send('delete the specific orders');
 });
 module.exports=route1;
