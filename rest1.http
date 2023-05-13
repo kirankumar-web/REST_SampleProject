@@ -61,6 +61,19 @@ curl -X POST  http://localhost:3002/orders -H
       "orderdate": "2023-04-05",
       "paymentinfo": "Credit Card" 
 }
+// updating specific prodcut data in database using by id & PUT
+###
+curl -X PUT http://localhost:3002/orders/645e12bfd1ec37d73bf19a25 -H
+"Content-Type: application/json" -d'
+{
+    "items": 3,
+    "price": 18666,
+    "orderid": 1234567,
+    "custinfo": "{kirankumar,7981297987, benglore, karnataka, 560037}",
+    "orderdate": "2023-05-12",
+    "paymentinfo": "Credit Card"
+  }
+
 
 // updating order specifc info of orderdata in database
 ###

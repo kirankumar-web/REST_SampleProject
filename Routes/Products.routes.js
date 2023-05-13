@@ -57,6 +57,7 @@ route.post('/', async(req, res, next) => {
 //     res.send(result)
 //     //res.send('creating the product')
 // })
+// get the single product by using its ID
 route.get('/:id',async(req,res,next)=>{
    // res.send('getting the specific product')
    const id=req.params.id;
@@ -70,7 +71,7 @@ route.get('/:id',async(req,res,next)=>{
     console.log(error.message);
    }
 })
-// updating product by using its id
+// updating specific product by using its id
 route.put('/:id',async(req,res,next)=>{
 const id=req.params.id;
 try {
@@ -85,8 +86,18 @@ catch (error) {
 }
     //res.send('updating the specific product')
 })
-route.patch('/:id2',(req,res,next)=>{
-    res.send('updating specific info of the product')
+route.patch('/:id',async(req,res,next)=>{
+   // res.send('updating specific info of the product')
+   const id=req.params.id;
+   try {
+    const update=req.body;
+    const option={next: true};
+    const result=await
+     Product.findByIdAndUpdate(id,update,option);
+    res.send(result);
+   } catch (error) {
+    console.log(error.message);
+   }
 })
 route.delete('/:id',async(req,res,next)=>{
     const id=req.params.id;
