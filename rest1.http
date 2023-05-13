@@ -1,24 +1,28 @@
+// get all the list of orderd
 ###
 GET http://localhost:3002/orders
 
+// get the specific order by using its ID
 ###
 GET http://localhost:3002/orders/645ddbe96e9b16a4896bb8f5
 ###
 GET http://localhost:3002/orders/645de8137ff2cbf9af161e6b
 ###
-GET http://localhost:3002/orders/645e12bfd1ec37d73bf19a25
+GET http://localhost:3002/orders/645eec1dd629c8f2cff0c129
 
 ###
 PUT http://localhost:3002/orders/id1 
 ###
 PATCH http://localhost:3002/orders/id2 
+
+//Deleting Specific order by using its ID
 ###
 DELETE  http://localhost:3002/orders/id3 
 ###
 DELETE  http://localhost:3002/orders/645ddbe96e9b16a4896bb8f5
 
 ###
-DELETE  http://localhost:3002/orders/645e12ddd1ec37d73bf1
+DELETE  http://localhost:3002/orders/645eec1dd629c8f2cff0c129
 
 ###
 GET http://localhost:3002/
@@ -26,14 +30,14 @@ GET http://localhost:3002/
 ###
 GET http://localhost:3002/orders
 
+// creating the order into database
 ###
-curl -X POST -H 
+curl -X POST http://localhost:3002/orders -H 
 "Content-Type: application/json" -d '
 {
     "items": "5",
      "price" : "6666"
-}' http://localhost:3002/orders
-
+}
 ###
 curl -X POST -H 
 "Content-Type: application/json" -d '
@@ -45,13 +49,32 @@ curl -X POST -H
       "orderdate": "2023-04-12",
       "paymentinfo": "Credit Card"
 }' http://localhost:3002/orders
-
 ###
-curl -X POST  http://localhost:3002/orders
-Content-Type: application/json
+curl -X POST  http://localhost:3002/orders -H
+"Content-Type: application/json" -d'
 {
     "items": "5",
-     "price" : "6666",
+     "price" : "9999",
       "id"   : "2343453",
-     "orderdate": "10/05/2023"
+     "orderid": "1234563456",
+     "custinfo": "{kirankumar,7981297987, kurnool, andhra}",
+      "orderdate": "2023-04-05",
+      "paymentinfo": "Credit Card" 
+}
+
+// updating order specifc info of orderdata in database
+###
+curl -X PATCH http://localhost:3002/orders/645de8137ff2cbf9af161e6b -H
+ "Content-Type: application/json" -d'
+{
+    "items": "3",
+    "price": "3333",
+    "paymentinfo": "debit card"
+}
+###
+curl -X PATCH http://localhost:3002/orders/645eec1bd629c8f2cff0c127 -H
+ "Content-Type: application/json" -d'
+{
+    "items": "1",
+    "paymentinfo": "debit card"
 }
