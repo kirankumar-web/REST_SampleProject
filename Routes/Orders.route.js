@@ -50,8 +50,18 @@ route1.put('/:id1', (req, res, next) => {
   res.send('updating the specific orders');
 });
 
-route1.patch('/:id2', (req, res, next) => {
-  res.send('updating specific info of the orders');
+route1.patch('/:id', async(req, res, next) => {
+  //res.send('updating specific info of the orders');
+  const id=req.params.id;
+  const update=req.body;
+  const option={new: true};
+  try {
+    const result= await Order.findByIdAndUpdate(id,update,option);
+    res.send(result);
+  } catch (error) {
+    console.log(error.message);
+  }
+
 });
 
 route1.delete('/:id', async(req, res, next) => {
