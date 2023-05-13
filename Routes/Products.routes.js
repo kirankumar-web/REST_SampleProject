@@ -7,7 +7,7 @@ route.get('/',async(req,res,next)=>{
     //res.send('getting all the list of the products')
      try {
         //const result=await Product.find({},{__v:0, _id:0,name:0,price:0});
-        const result=await Product.find({price:800},{__v:0});
+        const result=await Product.find({},{__v:0});
         res.send(result);
      } catch (error) {
         console.log(error.message);
@@ -57,18 +57,47 @@ route.post('/', async(req, res, next) => {
 //     res.send(result)
 //     //res.send('creating the product')
 // })
-route.get('/:id',(req,res,next)=>{
-    res.send('getting the specific product')
+route.get('/:id',async(req,res,next)=>{
+   // res.send('getting the specific product')
+   const id=req.params.id;
+   try {
+    //const product= await Product.findById(id);
+    const product= await 
+    Product.findOne({_id:id});
+
+    res.send(product);
+   } catch (error) {
+    console.log(error.message);
+   }
 })
-route.put('/:id1',(req,res,next)=>{
-    res.send('updating the specific product')
+// updating product by using its id
+route.put('/:id',async(req,res,next)=>{
+const id=req.params.id;
+try {
+const option={new :true};
+const update=req.body;
+const result=await 
+Product.findByIdAndUpdate(id,update,option);
+res.send(result);
+} 
+catch (error) {
+ console.log(error.message);
+}
+    //res.send('updating the specific product')
 })
 route.patch('/:id2',(req,res,next)=>{
     res.send('updating specific info of the product')
 })
-route.delete('/:id3',(req,res,next)=>{
-    
-    res.send('delete the specific product')
+route.delete('/:id',async(req,res,next)=>{
+    const id=req.params.id;
+    try {
+        const result=await Product.findByIdAndDelete(id);
+        res.send(result);
+        console.log(result);
+    } catch (error) {
+        console.log(error.message);
+    }
+   // res.send('delete the specific product')
 })
 
 module.exports= route;

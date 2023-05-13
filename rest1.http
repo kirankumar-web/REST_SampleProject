@@ -2,13 +2,23 @@
 GET http://localhost:3002/orders
 
 ###
-GET http://localhost:3002/orders/id
+GET http://localhost:3002/orders/645ddbe96e9b16a4896bb8f5
+###
+GET http://localhost:3002/orders/645de8137ff2cbf9af161e6b
+###
+GET http://localhost:3002/orders/645e12bfd1ec37d73bf19a25
+
 ###
 PUT http://localhost:3002/orders/id1 
 ###
 PATCH http://localhost:3002/orders/id2 
 ###
 DELETE  http://localhost:3002/orders/id3 
+###
+DELETE  http://localhost:3002/orders/645ddbe96e9b16a4896bb8f5
+
+###
+DELETE  http://localhost:3002/orders/645e12ddd1ec37d73bf1
 
 ###
 GET http://localhost:3002/
@@ -35,3 +45,13 @@ curl -X POST -H
       "orderdate": "2023-04-12",
       "paymentinfo": "Credit Card"
 }' http://localhost:3002/orders
+
+###
+curl -X POST  http://localhost:3002/orders
+Content-Type: application/json
+{
+    "items": "5",
+     "price" : "6666",
+      "id"   : "2343453",
+     "orderdate": "10/05/2023"
+}

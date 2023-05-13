@@ -1,19 +1,84 @@
+// get all the list of product
 GET http://localhost:3001/products
+
+// create a product 
 ###
-curl -X POST http://localhost:3001/products
-Content-Type: application/json
+curl -X POST http://localhost:3001/products -H
+ "Content-Type: application/json" -d'
 {
     "name" : "oneplus Nord",
     "price" : "400"
 }
 ###
-GET http://localhost:3001/products/id
+curl -X POST -H 
+"Content-Type: application/json" -d '
+{
+    "name" : "oneplus 11r",
+    "price" : "1400"
+}' http://localhost:3001/products
+
 ###
-PUT http://localhost:3001/products/id1
+curl -X POST http://localhost:3001/products -H 
+"Content-Type: application/json" -d '
+{
+    "name" : "oneplus 14r",
+    "price" : "2000"
+}'
+
+
+//get the single product by using its ID
+###
+GET http://localhost:3001/products/645db83a08678aff73ddc640
+###
+GET http://localhost:3001/products/645dc58d5157f9133756da58
+###
+GET http://localhost:3001/products/645dba96afb4adfa553395bc
+
+// updating prodcut by using it's ID
+###
+curl -X PUT http://localhost:3001/products/645dba96afb4adfa553395bc -H
+ "Content-Type: application/json" -d'
+{    "name": "oneplus 12r pro",
+    "price": "1700"
+}
+###
+curl -X PUT http://localhost:3001/products/645dba59afb4adfa553395ba
+ "Content-Type: application/json" -d'
+{
+    "name" : "oneplus 7r",
+    "price" : "1000"
+}
+###
+curl -X PUT -H 
+"Content-Type: application/json" -d '
+{
+    "name" : "oneplus 13r",
+    "price" : "1750"
+}' http://localhost:3001/products/645dc58d5157f9133756da58
+
+###
+curl -X PUT -H 
+"Content-Type: application/json" -d '
+{
+    "name" : "oneplus 6r",
+    "price" : "910"
+}' http://localhost:3001/products/645db83a08678aff73ddc640
+
+###
+curl -X PUT http://localhost:3001/products/645dba59afb4adfa553395ba -H 
+"Content-Type: application/json" -d '{
+    "name": "oneplus 7r",
+    "price": "1010"
+}'
+
 ###
 PATCH http://localhost:3001/products/id2
 ###
 DELETE http://localhost:3001/products/id3
+###
+DELETE http://localhost:3001/products/645dcd009f57b729b2efe1f1
+###
+DELETE http://localhost:3001/products/645dab946f74ea858e8c6eb3
 
 ###
 GET http://localhost:3001/
@@ -25,14 +90,6 @@ GET http://localhost:3001/test?name=user1&id=45
 GET http://localhost:3001/test/3458753674578/kiran
 
 ###
-curl -X POST  http://localhost:3002/orders
-Content-Type: application/json
-{
-    "items": "5",
-     "price" : "6666",
-      "id"   : "2343453",
-     "orderdate": "10/05/2023"
-}###
 GET  http://localhost:3001/test/34587534/kiran
 
 ###
@@ -49,19 +106,3 @@ POST  http://localhost:3001/test
 Content-Type: application/application/x-www-form-urlencoded
 
 id=34587534&user=kiran
-###
-curl -X POST -H 
-"Content-Type: application/json" -d '
-{
-    "name" : "oneplus 11r",
-    "price" : "1400"
-}' http://localhost:3001/products
-
-###
-curl -X POST -H 
-"Content-Type: application/json" -d '
-{
-    "name" : "oneplus 14r",
-    "price" : "1600"
-}' http://localhost:3001/products
-
