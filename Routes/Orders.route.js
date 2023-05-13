@@ -46,8 +46,17 @@ route1.get('/:id', async(req, res, next) => {
   //res.send('getting the specific orders');
 });
 
-route1.put('/:id1', (req, res, next) => {
-  res.send('updating the specific orders');
+route1.put('/:id', async(req, res, next) => {
+  //res.send('updating the specific orders');
+  const id=req.params.id;
+  try {
+    const update=req.body;
+    const option={next:true};
+    const result=await Order.findByIdAndUpdate(id,update,option);
+    res.send(result);
+  } catch (error) {
+    console.log(error.message);
+  }
 });
 
 route1.patch('/:id', async(req, res, next) => {

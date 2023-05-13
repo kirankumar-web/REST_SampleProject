@@ -71,8 +71,16 @@ curl -X PUT http://localhost:3001/products/645dba59afb4adfa553395ba -H
     "price": "1010"
 }'
 
+// updating specific product partial data by using PATCH & its ID 
 ###
 PATCH http://localhost:3001/products/id2
+###
+curl -X PATCH http://localhost:3001/products
+/645db83a08678aff73ddc640 -H
+"Content-Type: application/json" -d'
+{
+    "price": "800"
+}
 
 //deleting the product by using it's id
 ###
