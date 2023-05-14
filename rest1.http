@@ -55,7 +55,6 @@ curl -X POST  http://localhost:3002/orders -H
 {
     "items": "5",
      "price" : "9999",
-      "id"   : "2343453",
      "orderid": "1234563456",
      "custinfo": "{kirankumar,7981297987, kurnool, andhra}",
       "orderdate": "2023-04-05",
@@ -91,3 +90,53 @@ curl -X PATCH http://localhost:3002/orders/645eec1bd629c8f2cff0c127 -H
     "items": "1",
     "paymentinfo": "debit card"
 }
+
+//Handling POST Request validation Error
+### 
+curl -X POST  http://localhost:3002/orders -H
+"Content-Type: application/json" -d'
+{
+    "items": "10",
+     "price" : "77777",
+     "orderid": "0123456789",
+     "custinfo": "{kirankumar,7981297987, koilkuntla, nandyal}",
+      "orderdate": "2023-04-05",
+      "paymentinfo": "cash on delivery" 
+}
+###
+curl -X POST  http://localhost:3002/orders -H
+"Content-Type: application/json" -d'
+{
+     "orderid": "0123456789",
+     "custinfo": "{kirankumar,7981297987, koilkuntla, nandyal}",
+      "orderdate": "2023-04-05",
+      "paymentinfo": "cash on delivery" 
+} 
+// result is orders validation failed: price: Path `price` is required., items: Path `items` is required."
+###
+curl -X POST  http://localhost:3002/orders -H
+"Content-Type: application/json" -d'
+{
+    "items": "10",
+     "price" : "77777",
+     "orderid": "0123456789",
+      "paymentinfo": "cash on delivery" 
+}
+// result is orders validation failed: orderdate: Path `orderdate` is required., custinfo: Path `custinfo` is required."
+
+//Handling GET Request (single data by id) Errors
+###
+GET http://localhost:3002/orders
+###
+GET http://localhost:3002/orders/645de8137ff2cbf9af161e6b
+
+// order does not exist
+###
+GET http://localhost:3002/orders/645de8137ff2cbf9af161e69
+
+// invalid order id
+###
+GET http://localhost:3002/orders/645de8137ff2cbf9af161e
+
+
+
