@@ -1,5 +1,6 @@
 const express=require('express');
 const mongoose=require('mongoose');
+const createError=require('http-errors');
 const app=express();
 
 app.use(express.json());
@@ -11,7 +12,6 @@ mongoose.connect('mongodb+srv://kirankumaryadav:Q0qzHN8jS9HF6UZ4@cluster1.b4ot2y
 {
     console.log('mongodb connected---');
 });
-
  //app.all('/test/:id/:user',(req,res)=> {
     // console.log(req.query);
     // console.log(req.query.name);
@@ -26,7 +26,6 @@ mongoose.connect('mongodb+srv://kirankumaryadav:Q0qzHN8jS9HF6UZ4@cluster1.b4ot2y
 });
 const Prodroute= require('./Routes/Products.routes')
  app.use('/products',Prodroute)
-
 //  app.use((req,res,next)=>{
 //     res.status(404)
 //     res.send({
@@ -36,9 +35,10 @@ const Prodroute= require('./Routes/Products.routes')
 //  })
  
  app.use((req,res,next)=>{
-    const err=new Error("not found");
-    err.status=404;
-    next(err)
+    // const err=new Error("not found");
+    // err.status=404;
+    // next(err)
+    next(createError(404,'Not Found'));
 })
 app.use((err,req,res,next)=>{
     res.status(err.status||500);

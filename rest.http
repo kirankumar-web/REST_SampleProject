@@ -38,7 +38,8 @@ GET http://localhost:3001/products/645dba96afb4adfa553395bc
 ###
 curl -X PUT http://localhost:3001/products/645dba96afb4adfa553395bc -H
  "Content-Type: application/json" -d'
-{    "name": "oneplus 12r pro",
+{  
+      "name": "oneplus 12r pro",
     "price": "1700"
 }
 ###
@@ -75,8 +76,7 @@ curl -X PUT http://localhost:3001/products/645dba59afb4adfa553395ba -H
 ###
 PATCH http://localhost:3001/products/id2
 ###
-curl -X PATCH http://localhost:3001/products
-/645db83a08678aff73ddc640 -H
+curl -X PATCH http://localhost:3001/products/645db83a08678aff73ddc640 -H
 "Content-Type: application/json" -d'
 {
     "price": "800"
@@ -116,3 +116,28 @@ POST  http://localhost:3001/test
 Content-Type: application/application/x-www-form-urlencoded
 
 id=34587534&user=kiran
+
+//Error Handling
+
+//wrong ID (ID value is not contain in Database)
+###
+GET http://localhost:3001/products/645db83a08678aff73ddc64d
+
+// in this request id is not contains in the database (id value is not property of product ID )
+###
+GET http://localhost:3001/products/645db85508678aff73ddc64
+
+//Error Handling in Delete Request
+//wrong id it not matching of product Id in database
+###
+DELETE http://localhost:3001/products/645db83a08678aff73ddc64d
+//id is not contains of product id
+###
+DELETE http://localhost:3001/products/645db83a08678aff73ddc6
+
+###
+curl -X POST http://localhost:3001/products -H
+ "Content-Type: application/json" -d'
+{
+    "name" : "oneplus Nord"
+}
