@@ -1,6 +1,8 @@
 const express = require('express');
 const route1 = express.Router();
 const Order = require('../Models/Order.model');
+const createError=require('http-errors');
+const mongoose=require('mongoose');
 
 route1.get('/', async(req, res, next) => {
   //res.send('getting all the list of the orders');
@@ -13,7 +15,14 @@ route1.post('/', async(req, res, next) => {
       const result=await order.save();
       res.send(result);
     } catch (error) {
-        console.log(error.message);
+      if (error.name ==='ValidationError')
+       {
+          next(createError(422, error.message)); 
+          return; 
+      }
+        //console.log(error.message);
+        next(error);
+
     }
 });
 // route1.post('/', (req, res, next) => {
@@ -39,15 +48,23 @@ route1.get('/:id', async(req, res, next) => {
    const id=req.params.id;
    try {
     const order=await Order.findById(id);
+    if (!order)
+     {
+       throw createError(404,"order does not exist");  
+    }
     res.send(order);
    } catch (error) {
-    console.log(error.message);
+    if (error instanceof mongoose.CastError)
+     {
+     next(createError(400,"invalid product id"));
+     return;  
+    }
+    next(error);
+    //console.log(error.message);
    }
-  //res.send('getting the specific orders');
 });
-
+  //res.send('getting the specific orders');
 route1.put('/:id', async(req, res, next) => {
-  //res.send('updating the specific orders');
   const id=req.params.id;
   try {
     const update=req.body;
