@@ -94,9 +94,19 @@ route1.delete('/:id', async(req, res, next) => {
   const id=req.params.id;
   try {
     const result=await Order.findByIdAndDelete(id);
+    if (!result)
+     {
+       throw createError(404,"order does not Exist");  
+    }
     res.send(result);
   } catch (error) {
-    console.log(error.message)
+    if (error instanceof mongoose.CastError)
+     {
+      next(createError(400,"invalid order id"));
+      return;
+    }
+    //console.log(error.message)
+    next(error);
   }
   //res.send('delete the specific orders');
 });
