@@ -135,9 +135,71 @@ DELETE http://localhost:3001/products/645db83a08678aff73ddc64d
 ###
 DELETE http://localhost:3001/products/645db83a08678aff73ddc6
 
+//Error Handling in PATCH request
+//
+###
+curl -X PATCH http://localhost:3001/products/645db84808678aff73ddc642 -H
+"Content-Type: application/json" -d'
+{
+    "price": "900"
+}
+###
+curl -X PATCH http://localhost:3001/products/645db84808678aff73ddc640 -H
+"Content-Type: application/json" -d'
+{
+    "price": "900"
+}
+
+###
+curl -X PATCH http://localhost:3001/products/645db84808678aff73ddc6 -H
+"Content-Type: application/json" -d'
+{
+    "price": "900"
+}
+
+// Handling Errors in http PUT request (update the single product by its id)
+###
+curl -X PUT http://localhost:3001/products/645db85508678aff73ddc644 -H
+"Content-Type: application/json" -d'
+{
+    "name":"oneplus 11r",
+    "price":"1500"
+}
+###
+curl -X PUT http://localhost:3001/products/645db85508678aff73ddc64t -H
+"Content-Type: application/json" -d'
+{
+   "name":"oneplus 11r",
+    "price":"1500"
+}
+###
+curl -X PUT http://localhost:3001/products/645db85508678aff73ddc6 -H
+"Content-Type: application/json" -d'
+{
+    "price":"1500"
+}
+
+###
+GET http://localhost:3001/products
+
+// Handling Errors in http POST request (not passing in json file required data)
 ###
 curl -X POST http://localhost:3001/products -H
  "Content-Type: application/json" -d'
 {
-    "name" : "oneplus Nord"
+    "name" : "oneplus Nord CE2",
+    "price" : "700"
+}
+###
+curl -X POST http://localhost:3001/products -H
+ "Content-Type: application/json" -d'
+{
+    "price" : "700"
+}
+
+###
+curl -X POST http://localhost:3001/products -H
+ "Content-Type: application/json" -d'
+{
+    "name" : "oneplus Nord CE2"
 }
