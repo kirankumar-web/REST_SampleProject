@@ -4,11 +4,11 @@ GET http://localhost:3002/orders
 
 // get the specific order by using its ID
 ###
-GET http://localhost:3002/orders/645ddbe96e9b16a4896bb8f5
+GET http://localhost:3002/orders/6460e18a6e04517af8005a2d
 ###
 GET http://localhost:3002/orders/645de8137ff2cbf9af161e6b
 ###
-GET http://localhost:3002/orders/645eec1dd629c8f2cff0c129
+GET http://localhost:3002/orders/645eec1dd629c8f2cff0c12
 
 ###
 PUT http://localhost:3002/orders/id1 
@@ -19,10 +19,10 @@ PATCH http://localhost:3002/orders/id2
 ###
 DELETE  http://localhost:3002/orders/id3 
 ###
-DELETE  http://localhost:3002/orders/645ddbe96e9b16a4896bb8f5
+DELETE  http://localhost:3002/orders/6461979b83f87368637eafcc
 
 ###
-DELETE  http://localhost:3002/orders/645eec1dd629c8f2cff0c129
+DELETE  http://localhost:3002/orders/645eec1dd629c8f2cff0c1
 
 ###
 GET http://localhost:3002/
@@ -60,9 +60,9 @@ curl -X POST  http://localhost:3002/orders -H
       "orderdate": "2023-04-05",
       "paymentinfo": "Credit Card" 
 }
-// updating specific prodcut data in database using by id & PUT
+// updating specific order data in database using by id & PUT
 ###
-curl -X PUT http://localhost:3002/orders/645e12bfd1ec37d73bf19a25 -H
+curl -X PUT http://localhost:3002/orders/6461979b83f87368637eafcc -H
 "Content-Type: application/json" -d'
 {
     "items": 3,
@@ -76,11 +76,11 @@ curl -X PUT http://localhost:3002/orders/645e12bfd1ec37d73bf19a25 -H
 
 // updating order specifc info of orderdata in database
 ###
-curl -X PATCH http://localhost:3002/orders/645de8137ff2cbf9af161e6b -H
+curl -X PATCH http://localhost:3002/orders/6461979b83f87368637eafcc -H
  "Content-Type: application/json" -d'
 {
     "items": "3",
-    "price": "3333",
+    "price": "13333",
     "paymentinfo": "debit card"
 }
 ###
