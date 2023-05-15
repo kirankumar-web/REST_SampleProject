@@ -70,9 +70,19 @@ route1.put('/:id', async(req, res, next) => {
     const update=req.body;
     const option={next:true};
     const result=await Order.findByIdAndUpdate(id,update,option);
+    if (!result)
+     {
+       throw createError(404,"order does not exist");  
+    }
     res.send(result);
   } catch (error) {
-    console.log(error.message);
+    if (error instanceof mongoose.CastError) 
+    {
+      next(createError(400,"invalid order id"));
+      return;
+    }
+    //console.log(error.message);
+    next(error);
   }
 });
 
@@ -83,9 +93,18 @@ route1.patch('/:id', async(req, res, next) => {
   const option={new: true};
   try {
     const result= await Order.findByIdAndUpdate(id,update,option);
+    if (!result) {
+      throw createError(404,"order does not exist");
+    }
     res.send(result);
   } catch (error) {
-    console.log(error.message);
+    //console.log(error.message);
+    if (error instanceof mongoose.CastError)
+     {
+       next(createError(400,"invalid order id"));
+       return;
+    }
+    next(error)
   }
 
 });

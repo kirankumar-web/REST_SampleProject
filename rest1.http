@@ -150,5 +150,46 @@ DELETE  http://localhost:3002/orders/645de8137ff2cbf9af161e66
 ###
 DELETE  http://localhost:3002/orders/645de8137ff2cbf9af161e6
 
+//Handling Errors PUT request (update product by using ID)
+###
+curl -X PUT http://localhost:3002/orders/6460e18a6e04517af8005a2d -H
+"Content-Type: application/json" -d'
+{
+    "paymentinfo": "Debit Card"
+}
+// order id doesnt exist
+###
+curl -X PUT http://localhost:3002/orders/6460e18a6e04517af8005a2e -H
+"Content-Type: application/json" -d'
+{
+    "paymentinfo": "Credit Card"
+}
+//invalid order id
+###
+curl -X PUT http://localhost:3002/orders/6460e18a6e04517af8005a2 -H
+"Content-Type: application/json" -d'
+{
+    "paymentinfo": "Credit Card"
+}
 
-
+//Handling Errors PATCH request (update specific data of order)
+###
+curl -X PATCH http://localhost:3002/orders/645e12ddd1ec37d73bf19a29 -H
+ "Content-Type: application/json" -d'
+{
+    "items": "1"
+}
+// order id doesnt exist
+###
+curl -X PATCH http://localhost:3002/orders/645e12ddd1ec37d73bf19a20 -H
+ "Content-Type: application/json" -d'
+{
+    "items": "1"
+}
+//invalid order id
+###
+curl -X PATCH http://localhost:3002/orders/645e12ddd1ec37d73bf19a2 -H
+ "Content-Type: application/json" -d'
+{
+    "items": "1"
+}
