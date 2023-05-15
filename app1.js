@@ -11,7 +11,8 @@ mongoose.connect('mongodb+srv://kirankumaryadav:Q0qzHN8jS9HF6UZ4@cluster1.b4ot2y
 {
     console.log('mongodb connected---');
 });
-const Ordroute= require('./Routes/Orders.route');
+//const Ordroute= require('./Routes/Orders.route');
+const Ordroute= require('./Routes/MVCorders.route'); 
 const { Error } = require('sequelize');
 app1.use('/orders', Ordroute)
 
