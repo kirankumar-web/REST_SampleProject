@@ -5,13 +5,39 @@ const app=express();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+
+//initialise mongoose DB
+require('./initDB')();
 //mongodb+srv://kirankumaryadav:<password>@cluster1.b4ot2yq.mongodb.net/?retryWrites=true&w=majority
 //kirankumaryadav
 //Q0qzHN8jS9HF6UZ4
-mongoose.connect('mongodb+srv://kirankumaryadav:Q0qzHN8jS9HF6UZ4@cluster1.b4ot2yq.mongodb.net/REST_PRODUCT_API').then(()=>
-{
-    console.log('mongodb connected---');
-});
+// mongoose.connect('mongodb+srv://kirankumaryadav:Q0qzHN8jS9HF6UZ4@cluster1.b4ot2yq.mongodb.net/REST_PRODUCT_API')
+// .then(()=>
+// {
+//     console.log('mongodb connected....');
+// })
+// .catch(err => console.log(err.message));
+// mongoose.connection.on('connected',()=>{
+//     console.log("mongoose connected to database");
+// })
+// mongoose.connection.on('error',(err)=>{
+//     console.log(err.message);
+// })
+// mongoose.connection.once('disconnected', () => {
+//     console.log("mongoose connection is disconnected....");
+//   });
+  
+//   process.on('SIGINT', async () => {
+//     try {
+//       await mongoose.disconnect();
+//       console.log("mongoose connection is disconnected due to app termination");
+//       process.exit(0);
+//     } catch (error) {
+//       console.error(error);
+//       process.exit(1);
+//     }
+//   });
+  
  //app.all('/test/:id/:user',(req,res)=> {
     // console.log(req.query);
     // console.log(req.query.name);
