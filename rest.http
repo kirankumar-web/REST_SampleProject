@@ -28,7 +28,7 @@ curl -X POST http://localhost:3001/products -H
 
 //get the single product by using its ID
 ###
-GET http://localhost:3001/products/645db83a08678aff73ddc640
+GET http://localhost:3001/products/645db84808678aff73ddc642
 ###
 GET http://localhost:3001/products/645dc58d5157f9133756da58
 ###
