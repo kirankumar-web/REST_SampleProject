@@ -2,7 +2,7 @@ const mongoose=require('mongoose');
 
 module.exports=()=>
 {
-    mongoose.connect('mongodb+srv://kirankumaryadav:Q0qzHN8jS9HF6UZ4@cluster1.b4ot2yq.mongodb.net/REST_PRODUCT_API')
+    mongoose.connect(process.env.MONGODB_URI)
 .then(()=>
 {
     console.log('mongodb connected....');
