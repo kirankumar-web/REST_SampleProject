@@ -24,7 +24,9 @@ mongoose.connect('mongodb+srv://kirankumaryadav:Q0qzHN8jS9HF6UZ4@cluster1.b4ot2y
     console.log(req.body);
     res.send(req.body);
 });
+//const Prodroute= require('./Routes/Products.routes')
 const Prodroute= require('./Routes/Products.routes')
+
  app.use('/products',Prodroute)
 //  app.use((req,res,next)=>{
 //     res.status(404)
