@@ -2,6 +2,7 @@ const express=require('express')
 const mongoose=require('mongoose');
 const app1=express();
 const createError=require('http-errors');
+const dotenv=require('dotenv').config();
 app1.use(express.json());
 app1.use(express.urlencoded({extended : true}));
 
@@ -36,6 +37,8 @@ app1.use ((err,req,res,next)=>{
         }
     })
 })
-app1.listen(3002,()=>{
-    console.log("server on port 3002")
+const PORT1=process.env.PORT1 ||4000
+console.log(PORT1);
+app1.listen(PORT1,()=>{
+    console.log("server on port "+PORT1);
 })
