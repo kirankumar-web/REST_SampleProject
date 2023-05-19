@@ -203,3 +203,9 @@ curl -X POST http://localhost:3001/products -H
 {
     "name" : "oneplus Nord CE2"
 }
+###
+curl -X PATCH http://localhost:3001/products/645db85508678aff73ddc644 -H 
+"Content-type : application/json" -d'
+{
+    "price" : "1200"
+}
