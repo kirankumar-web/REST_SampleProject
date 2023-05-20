@@ -51,8 +51,8 @@ getsingleorder : async(req, res, next) => {
  updateAOrder : async(req, res, next) => {
     const id=req.params.id;
     try {
-      const update=req.body;
       const option={next:true};
+      const update=req.body;
       const result=await Order.findByIdAndUpdate(id,update,option);
       if (!result)
        {

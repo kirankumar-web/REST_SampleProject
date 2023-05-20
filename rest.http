@@ -209,3 +209,10 @@ curl -X PATCH http://localhost:3001/products/645db85508678aff73ddc644 -H
 {
     "price" : "1200"
 }
+
+###
+curl -X PUT http://localhost:3001/products/645dba59afb4adfa553395ba -H
+"Content-Type: application/json" -d'
+{
+    "name" : "oneplus 7r+"
+}

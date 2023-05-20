@@ -76,7 +76,7 @@ curl -X PUT http://localhost:3002/orders/6461979b83f87368637eafcc -H
 
 // updating order specifc info of orderdata in database
 ###
-curl -X PATCH http://localhost:3002/orders/6461979b83f87368637eafcc -H
+curl -X PATCH http://localhost:3002/orders/645dfff05297e0ddc6ce27f9 -H
  "Content-Type: application/json" -d'
 {
     "items": "3",
@@ -192,4 +192,15 @@ curl -X PATCH http://localhost:3002/orders/645e12ddd1ec37d73bf19a2 -H
  "Content-Type: application/json" -d'
 {
     "items": "1"
+}
+###
+curl -X PUT http://localhost:3002/orders/645dfff05297e0ddc6ce27f9 -H
+"Content-Type: application/json" -d'
+{
+    "items": 9,
+  "price": 10999,
+  "orderid": 1122334455,
+  "custinfo": "{kirankumar,7981297987, benglore, karnataka}",
+  "orderdate": "2023-05-19",
+  "paymentinfo": "credit card"
 }

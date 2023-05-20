@@ -71,9 +71,9 @@ route1.get('/:id', async(req, res, next) => {
 route1.put('/:id',async(req, res, next) => {
   const id=req.params.id;
   try {
+    const options= {next: true};
     const update=req.body;
-    const option={next:true};
-    const result=await Order.findByIdAndUpdate(id,update,option);
+    const result=await Order.findByIdAndUpdate(id, update, options);
     if (!result)
      {
        throw createError(404,"order does not exist");  
